@@ -173,7 +173,7 @@ z_velocity                also, and point towards the Mercury.
 						  Instruments #2-#5 will lie in the x'y' -plane.
 
 * x_velocity, y_velocity, z_velocity
-    A vector pointing to the direction of the spacecraft velocity. Currently this vector must lie in the xz-plane. The nadir direction is defined to be orthogonal to this vector in xz-plane also, and point towards the Mercury.
+    * A vector pointing to the direction of the spacecraft velocity. Currently this vector must lie in the xz-plane. The nadir direction is defined to be orthogonal to this vector in xz-plane also, and point towards the Mercury.
 
 MirrorDipole
 ------------
