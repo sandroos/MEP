@@ -1,0 +1,86 @@
+// This file is part of MEP.
+//
+//    Copyright 2014 Arto Sandroos.
+//
+//    MEP is free software: you can redistribute it and/or modify
+//    it under the terms of the GNU General Public License as published by
+//    the Free Software Foundation, either version 3 of the License, or
+//    (at your option) any later version.
+//
+//    MEP is distributed in the hope that it will be useful,
+//    but WITHOUT ANY WARRANTY; without even the implied warranty of
+//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//    GNU General Public License for more details.
+//
+//    You should have received a copy of the GNU General Public License
+//    along with MEP.  If not, see <http://www.gnu.org/licenses/>.
+
+RandomNumbers {
+  seed -1235465954
+}
+
+Dipole {
+  B_pole_reference(T) 763.0e-9
+  R_pole(km)          MERCURY
+  x_ori               0.0
+  y_ori               0.2493280028
+  z_ori               -1.0
+  offset_angle(deg)   180.0
+  offset(km)          121.985
+  minradius(hermean)  1.0
+  maxradius(hermean)  2.5
+}
+
+MirrorDipole {
+  B0_pole_reference(T)           763.0e-9
+  R0_pole(hermean)               1.0
+  tiltangle(deg)                 14.0
+  B1_pole_reference(T)           1.2208e-4
+  R1_pole(hermean)               1.0
+  mirrordipole_distance(hermean) 7.4			 
+  minradius(hermean)             1.0
+  maxradius(hermean)             2.0
+  x_maxradius(hermean)           -0.5
+  y_maxradius(hermean)           0.0
+  z_maxradius(hermean)           0.0
+}
+
+MirDipSheet {
+  B0_pole_reference(T)            763.0e-9
+  R0_pole(hermean)                1.0
+  tiltangle(deg)                  14.0
+  B1_pole_reference(T)            1.2208e-4
+  R1_pole(hermean)                1.0
+  mirrordipole_distance(hermean)  7.4
+  B_sheet(T)                      4.0e-8
+  L_sheet_x-width(hermean)        10.0
+  D_sheet_z-thickness(hermean)    0.1
+  x_sheet_front_boundary(hermean) -1.6
+  minradius(hermean)              1.0
+  maxradius(hermean)              2.5
+  x_maxradius(hermean)            -0.65
+  y_maxradius(hermean)            0.0
+  z_maxradius(hermean)            0.0
+}
+
+Injector {
+  instrument         1
+  conehalfwidth(deg) 30.0
+  particles(int)     2500
+  q(elementary)      1.0
+  m(protons)         1.0
+  energy_min(keV)    1000.0
+  energy_max(keV)    1001.0
+  pwrlawindex        0.0
+  x_spacecraft(km)   2939.7
+  y_spacecraft(km)   0.0
+  z_spacecraft(km)   0.0
+  x_velocity         0.0
+  y_velocity         0.0
+  z_velocity         -1.0
+}
+
+Simulation {
+  maxtime_per_dt     24000
+  saveinterval_dt    5
+}

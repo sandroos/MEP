@@ -1,0 +1,37 @@
+# This file is part of MEP.
+#
+#    Copyright 2014 Arto Sandroos.
+#
+#    MEP is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    MEP is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with MEP.  If not, see <http://www.gnu.org/licenses/>.
+
+load "gp_sat"
+
+set xlabel 'X-axis'
+set ylabel 'Y-axis'
+set zlabel 'Z-axis'
+set xrange [-2:2]
+set yrange [-2:2]
+set zrange [-1.5:1.5]
+
+splot "o.txt" using 6:7:8 with points ps 0.1 title 'future',\
+"o.txt" using 14:15:16 with points ps 0.1 title 'past',\
+"spher.txt" using 1:2:3 with lines title '',\
+"sat.txt" using 1:2:3:4:5:6 with vectors title '',\
+"lines.txt" using 1:2:3 with lines title ''
+
+
+
+
+
+
