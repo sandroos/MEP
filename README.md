@@ -2,7 +2,7 @@
 
 A code for modeling Magnetospheric Energetic Particles.
 
-# GENERAL
+# General
 
 The simulation is compiled by typing
 
@@ -102,7 +102,7 @@ Note that the code needs to be compiled using
 
 `> make mercury "FIELD=mirrordipole.o" "FLAGS=-DTRAJ"`
 
-# INPUT PARAMETERS FOR THE SIMULATION
+# Input Parameters for the Simulation
 
 ## RandomNumbers
 
@@ -196,7 +196,7 @@ Note that the code needs to be compiled using
     * Defines the interval the trajectory of the particle is written into the output file.
     * This parameter is used only when the simulation has been compiled with the "-DTRAJ" option (see above).
 
-# CALCULATION OF FIELD LINES FOR THE GNUPLOT VISUALIZATION
+# Calculation of Field Lines for gnuplot Visualization
 
 There is a very crude and barbaric program that will calculate some field lines to an ascii 
 file, which can then be included in gnuplot visualization. First, it needs to be compiled 
