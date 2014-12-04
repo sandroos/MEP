@@ -1,10 +1,8 @@
 # MEP
-=====
 
 A code for modeling Magnetospheric Energetic Particles.
 
 # GENERAL
-========
 
 The simulation is compiled by typing
 
@@ -105,7 +103,6 @@ Note that the code needs to be compiled using
 `> make mercury "FIELD=mirrordipole.o" "FLAGS=-DTRAJ"`
 
 # INPUT PARAMETERS FOR THE SIMULATION
-=====================================
 
 ## RandomNumbers
 
@@ -200,7 +197,6 @@ Note that the code needs to be compiled using
     * This parameter is used only when the simulation has been compiled with the "-DTRAJ" option (see above).
 
 # CALCULATION OF FIELD LINES FOR THE GNUPLOT VISUALIZATION
-==========================================================
 
 There is a very crude and barbaric program that will calculate some field lines to an ascii 
 file, which can then be included in gnuplot visualization. First, it needs to be compiled 
