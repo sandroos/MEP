@@ -104,114 +104,103 @@ Note that the code needs to be compiled using
 
 `> make mercury "FIELD=mirrordipole.o" "FLAGS=-DTRAJ"`
 
-INPUT PARAMETERS FOR THE SIMULATION
-===================================
+= INPUT PARAMETERS FOR THE SIMULATION
+=====================================
 
-RandomNumbers
--------------
+== RandomNumbers
 
-seed                      A negative integer, seed value for the random number generator. 
-                          If not given, seed is calculated from system clock.
+* `seed`
+    * A positive integer, seed value for the random number generator. If not given, seed is calculated from system clock.
 						  
-Dipole
-------
+== Dipole
 
-B_pole_reference(T)       Magnitude of the magnetic field, in Teslas, at the poles of the dipole.
+* `B_pole_reference(T)`
+    * Magnitude of the magnetic field, in Teslas, at the poles of the dipole.
+* `R_pole(km)`
+    * Distance from dipole origin to the pole where B_pole_reference(T) is specified, in km. If MERCURY is given, the Hermean equatorial radius is used.
+* `x_ori,y_ori,z_ori`
+    * These defines the orientation of the dipole moment, positive pole is to the direction of this vector. This does not need to be a unit vector, it will be normalized to unity. 
+* `offset_angle(deg)`
+    * The Hermean dipole moment does not reside at the center of the planet. This defines the angle between the dipole origin and x-axis, in the xy-plane.
+* `offset(km)`
+    * The distance between the center of Mercury and the dipole origin, in km.
+    * The dipole origin will be (r cos(a),r sin(a), 0), where r is the value given here, and a is the offset_angle(deg). 
+* `minradius(hermean)`
+    * Minimum allowed radius for the particles. 
+    * If r <= radius, the particle is removed from the simulation.
+* `maxradius(hermean)`
+    * Maximum allowed radius for the particles.
+    * If r >= radius, the particle is removed from the simulation.
 
-R_pole(km)                Distance from dipole origin to the pole where B_pole_reference(T) is 
-                          specified, in km. If MERCURY is given, the Hermean equatorial radius is used.
+== Injector
 
-x_ori,y_ori,z_ori         These defines the orientation of the dipole moment, positive pole is 
-                          to the direction of this vector. This does not need to be a unit vector, 
-						  it will be normalized to unity. 
-
-offset_angle(deg)         The Hermean dipole moment does not reside at the center of the planet. 
-                          This defines the angle between the dipole origin and x-axis, in the xy-plane.
-						  
-offset(km)                The distance between the center of Mercury and the dipole origin, in km. 
-                          The dipole origin will be (r cos(a),r sin(a), 0), where r is the value 
-						  given here, and a is the offset_angle(deg). 
-
-minradius(hermean)        Minimum allowed radius for the particles. If r <= radius, the particle is 
-                          removed from the simulation.
-
-maxradius(hermean)        Maximum allowed radius for the particles. If r >= radius, the particle is 
-                          removed from the simulation.
-
-Injector
---------
-
-* Instrument
+* `instrument`
     * The number of the instrument (1-5) that should be used in the simulation. 
     * Only particles that have entered this instrument will be calculated.
-* conehalfwidth
+* `conehalfwidth(deg)`
     * Half width of the observation cone of the chosen instrument, in degrees.
-* particles
+* `particles(int)`
     * Number of simulated particles (positive integer).
-* q
+* `q(elementary)`
     * Charge of the simulated particles, in elementary charges (proton charge = 1.0 etc).
-* m
+* `m(protons)`
     * Mass of the simulated particles, in proton masses.
-* energy_min, energy_max
+* `energy_min(keV), energy_max(keV)`
     * Minimum and maximum injection energies of simulated particles in keV.
     * The energy_max must be larger than energy_min.
-* pwrlawindex
+* `pwrlawindex`
     * Particles are injected using a power law distribution. This is the power law index.
-* x_spacecraft, y_spacecraft, z_spacecraft
+* `x_spacecraft(km), y_spacecraft(km), z_spacecraft(km)`
     * Coordinates of the injection position, i.e., coordinates of the spacecraft, in km.
-* x_velocity, y_velocity, z_velocity
+* `x_velocity, y_velocity, z_velocity`
     * A vector pointing to the direction of the spacecraft velocity. Currently this vector must lie in the xz-plane. The nadir direction is defined to be orthogonal to this vector in xz-plane also, and point towards the Mercury.
     * Instrument #1 will point to the opposite direction from the nadir vector.
     * Instruments #2-#5 will lie in the x'y' -plane.
 
-MirrorDipole
-------------
+== MirrorDipole
 
-B0_pole_reference(T)              A reference value for the planetary dipole field at the poles of 
-                                  the planetary dipole field.
+* `B0_pole_reference(T)`
+    * A reference value for the planetary dipole field at the poles of the planetary dipole field.
+* `R0_pole(hermean)`
+    * Distance from the planetary dipole moment to the poles in hermean radii.
+    * This value, together with B0_pole_reference(T), are used to calculate the dipole moment of the planetary dipole.
+* `tiltangle(deg)`
+    * The tilt angle of the planetary dipole in the yz-plane, in degrees. 
+    * The mirror dipole will have the same tilt angle.
+* `B1_pole_reference(T)`
+    * A reference value for the mirror dipole field at the poles of the mirror dipole field.
+* `R1_pole(hermean)`
+    * Distance from the mirror dipole moment to the poles in hermean radii.
+    * See R0_pole(hermean).
+* `mirrordipole_distance(hermean)`
+    * The distance between the center of Mercury and the mirror dipole moment along the x-axis, in hermean radii. 
+    * The origin of the mirror dipole is at coordinates (x,0,0), where x is the value of this parameter.
+* `minradius(hermean)`
+    * Minimum allowed radius for the particles. 
+    * If r <= radius, the particle is removed from the simulation.
+* `maxradius(hermean)`
+    * Maximum allowed radius for the particles.
+    * If r >= radius, the particle is removed from the simulation.
+    * Note that the origin of this "exit sphere" is not at the center of the planet, but at the coordinates specified below.
+* `x_maxradius(hermean)`
+    * x-coordinate of the center of the outer "exit sphere".
+* `y_maxradius(hermean)`
+    * y-coordinate of the center of the outer "exit sphere".
+* `z_maxradius(hermean)`
+    * z-coordinate of the center of the outer "exit sphere".
 
-R0_pole(hermean)                  Distance from the planetary dipole moment to the poles in hermean radii.
-                                  This value, together with B0_pole_reference(T), are used to calculate the 
-								  dipole moment of the planetary dipole.
-								  
-tiltangle(deg)                    The tilt angle of the planetary dipole in the yz-plane, in degrees. The 
-                                  mirror dipole will have the same tilt angle.
+== Simulation
 
-B1_pole_reference(T)              A reference value for the mirror dipole field at the poles of the mirror dipole field.
+* `maxtime_per_dt`
+    * Maximum simulation time for each particle, in time steps. The time step is calculated in the simulation. 
+    * If this simulation time is reached, the particle will be discarded.
+    * This is used to get rid of particles that hang around for too long.
+* `saveinterval_dt`
+    * Defines the interval the trajectory of the particle is written into the output file.
+    * This parameter is used only when the simulation has been compiled with the "-DTRAJ" option (see above).
 
-R1_pole(hermean)                  Distance from the mirror dipole moment to the poles in hermean radii. See 
-                                  R0_pole(hermean).
-
-mirrordipole_distance(hermean)    The distance between the center of Mercury and the mirror dipole moment along 
-                                  the x-axis, in hermean radii. In other words, the origin of the mirror dipole is 
-								  at coordinates (x,0,0), where x is the value of this parameter. 
-
-minradius(hermean)                Minimum allowed radius for the particles. If r <= radius, the particle is
-                                  removed from the simulation.
-
-maxradius(hermean)                Maximum allowed radius for the particles. However, the origin of this "exit sphere"
-                                  is not at the center of the planet, but at the coordinates specified below.
-								  
-x_maxradius(hermean)              x-coordinate of the center of the outer "exit sphere".
-
-y_maxradius(hermean)              y-coordinate of the center of the outer "exit sphere".
-
-z_maxradius(hermean)              z-coordinate of the center of the outer "exit sphere".
-
-
-Simulation
-----------
-
-maxtime_per_dt            Maximum simulation time for each particle, in time steps. The time step 
-                          is calculated in the simulation. If this simulation time is reached, the 
-						  particle will be discarded.
-
-saveinterval_dt           Defines the interval the trajectory of the particle is written into the output file.
-                          This parameter is used only when the simulation has been compiled with the 
-						  -DTRAJ option (see above).
-
-CALCULATION OF FIELD LINES FOR THE GNUPLOT VISUALIZATION
-========================================================
+= CALCULATION OF FIELD LINES FOR THE GNUPLOT VISUALIZATION
+==========================================================
 
 There is a very crude and barbaric program that will calculate some field lines to an ascii 
 file, which can then be included in gnuplot visualization. First, it needs to be compiled 
