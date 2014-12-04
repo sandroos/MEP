@@ -19,9 +19,11 @@ The output file contains the injection, future, and past states of each particle
 "future" means that the trajectory has been calculated forward in time, and "past" that 
 the trajectory has been calculated backwards in time. The output file is in ascii.
 
-Per column, the contents are: 
-`1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17  18  19  20
-gi  vxi vyi vzi t1  x1  y1  z1  g1 vx1 vy1 vz1 t2  x2  y2  z2  g2  vx2 vy2 vz2`
+Per column, the contents are:
+```
+1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17  18  19  20
+gi  vxi vyi vzi t1  x1  y1  z1  g1 vx1 vy1 vz1 t2  x2  y2  z2  g2  vx2 vy2 vz2
+```
 
 Here i = injection state
      1 = future state
@@ -33,13 +35,16 @@ Here i = injection state
     `vx,vy,vz`    = components of the velocity
 
 There are a few example parameter files:
+
 `./mercury params.txt o.txt`
 
 If o.txt is used as the name of the output file, there are gnuplot macros that 
 can be used to visualize the results:
-`> gnuplot
+```
+> gnuplot
 gnuplot> load "gp_obs"
-gnuplot> load "gp_fobs"`
+gnuplot> load "gp_fobs"
+```
 
 The 3D plot can be rotated using mouse. There is a very crude wireframe model of 
 the surface of the Mercury to aid the eye. BepiColombo's nadir- and velocity vectors 
@@ -52,21 +57,29 @@ There are at the moment two magnetic field configurations that can be used. The
 selection between these is made at compile time, i.e., you need to edit the FIELD-parameter 
 in the Makefile (either dipole.o or mirrordipole.o). Alternatively, you can set the 
 magnetic field at the command line
-`> make mercury FIELD=dipole.o
-> make mercury FIELD=mirrordipole.o`
+```
+> make mercury FIELD=dipole.o
+> make mercury FIELD=mirrordipole.o
+```
 
 You can also calculate and print the trajectory of a single particle. In this case one writes to the terminal
-`> make clean
-> make mercury "FLAGS=-DTRAJ"`
+```
+> make clean
+> make mercury "FLAGS=-DTRAJ"
+```
 
 The simulation is ran exactly in the same manner as above:
-`> ./mercury params_chaotic.txt o.txt
-> ./mercury params_chaotic2.txt o.txt`
+```
+> ./mercury params_chaotic.txt o.txt
+> ./mercury params_chaotic2.txt o.txt
+```
 
 If the output file is named as o.txt, there are again gnuplot macro for fast visualization.
-`> gnuplot
+```
+> gnuplot
 gnuplot> load "gp_traj"
-gnuplot> load "gp_ftraj"`
+gnuplot> load "gp_ftraj"
+```
 
 The BepiColombo vectors and Hermean surfaces are drawn as explained above. The particle future and 
 past trajectories are drawn using a curve. NOTE: both the future and past trajectories are drawn using 
@@ -74,15 +87,19 @@ the same color! "gp_ftraj" is the same as "gp_traj", except that it also draws f
 "lines.txt" (see below).
 
 The output file has a different format in this case. It is as follows:
-`1  2  3  4  5  6  7  8  9  10
-`t  x  y  z  vx vy vz Bx By Bz`
+```
+1  2  3  4  5  6  7  8  9  10
+t  x  y  z  vx vy vz Bx By Bz
+```
 
 The two example parameter files named as "_chaotic.txt" should show chaotic orbits of ~300 keV protons. 
 The file "params_mirror.txt" does the same for the mirror dipole field configuration, but 
 using 1 MeV protons.
+
 `> ./mercury params_mirror.txt o.txt`
 
 Note that the code needs to be compiled using 
+
 `> make mercury "FIELD=mirrordipole.o" "FLAGS=-DTRAJ"`
 
 INPUT PARAMETERS FOR THE SIMULATION
@@ -205,7 +222,8 @@ CALCULATION OF FIELD LINES FOR THE GNUPLOT VISUALIZATION
 There is a very crude and barbaric program that will calculate some field lines to an ascii 
 file, which can then be included in gnuplot visualization. First, it needs to be compiled 
 with
-^> make flines`
+
+`> make flines`
 
 Make sure that in the Makefile the value of the FIELD parameter is the same that has been used 
 when compiling the particle mover simulation, or otherwise the field lines are calculated from 
@@ -215,10 +233,13 @@ NOTE: If you change the parameters of the magnetic field in the mercury-simulati
       need to rerun flines!
 
 If you do not want to edit the Makefile, you can also set it as
-`> make flines FIELD=dipole.o
-> make flines FIELD=mirrordipole.o`
+```
+> make flines FIELD=dipole.o
+> make flines FIELD=mirrordipole.o
+```
 
 The code is run by typing
+
 `> ./flines <tilt angle> <N_theta> <N_phi> <parameter file> > lines.txt`
 
 where
