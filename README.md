@@ -1,10 +1,10 @@
-MEP
-===
+# MEP
+=====
 
 A code for modeling Magnetospheric Energetic Particles.
 
-GENERAL
-=======
+# GENERAL
+========
 
 The simulation is compiled by typing
 
@@ -104,15 +104,15 @@ Note that the code needs to be compiled using
 
 `> make mercury "FIELD=mirrordipole.o" "FLAGS=-DTRAJ"`
 
-= INPUT PARAMETERS FOR THE SIMULATION
+# INPUT PARAMETERS FOR THE SIMULATION
 =====================================
 
-== RandomNumbers
+## RandomNumbers
 
 * `seed`
     * A positive integer, seed value for the random number generator. If not given, seed is calculated from system clock.
 						  
-== Dipole
+## Dipole
 
 * `B_pole_reference(T)`
     * Magnitude of the magnetic field, in Teslas, at the poles of the dipole.
@@ -132,7 +132,7 @@ Note that the code needs to be compiled using
     * Maximum allowed radius for the particles.
     * If r >= radius, the particle is removed from the simulation.
 
-== Injector
+## Injector
 
 * `instrument`
     * The number of the instrument (1-5) that should be used in the simulation. 
@@ -157,7 +157,7 @@ Note that the code needs to be compiled using
     * Instrument #1 will point to the opposite direction from the nadir vector.
     * Instruments #2-#5 will lie in the x'y' -plane.
 
-== MirrorDipole
+## MirrorDipole
 
 * `B0_pole_reference(T)`
     * A reference value for the planetary dipole field at the poles of the planetary dipole field.
@@ -189,7 +189,7 @@ Note that the code needs to be compiled using
 * `z_maxradius(hermean)`
     * z-coordinate of the center of the outer "exit sphere".
 
-== Simulation
+## Simulation
 
 * `maxtime_per_dt`
     * Maximum simulation time for each particle, in time steps. The time step is calculated in the simulation. 
@@ -199,7 +199,7 @@ Note that the code needs to be compiled using
     * Defines the interval the trajectory of the particle is written into the output file.
     * This parameter is used only when the simulation has been compiled with the "-DTRAJ" option (see above).
 
-= CALCULATION OF FIELD LINES FOR THE GNUPLOT VISUALIZATION
+# CALCULATION OF FIELD LINES FOR THE GNUPLOT VISUALIZATION
 ==========================================================
 
 There is a very crude and barbaric program that will calculate some field lines to an ascii 
