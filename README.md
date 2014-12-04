@@ -141,39 +141,28 @@ maxradius(hermean)        Maximum allowed radius for the particles. If r >= radi
 Injector
 --------
 
-Instrument                The number of the instrument (1-5) that should be used in the simulation. 
-                          Only the particles that have entered this instrument will be calculated.
-
-conehalfwidth(deg)        Half width of the observation cone of the chosen instrument, in degrees.
-
-particles(int)            Number of simulated particles.
-
-q(elementary)             Charge of the simulated particles, in elementary charges (proton charge = 1.0 etc).
-1
-m(protons)                Mass of the simulated particles, in proton masses. 
-
-energy_min(keV)           Minimum energy of the simulated particles, in keV.
-
-energy_max(keV)           Maximum energy of the simulated particles, in keV. Must be > energy_min(keV).
-
-pwrlawindex               Particles are injected using a power law distribution. This is the power law index.
-
-x_spacecraft(km)          Coordinates of the injection position, i.e., coordinates of the spacecraft, in km.
-y_spacecraft(km)
-z_spacecraft(km)
-
-x_velocity                A vector pointing to the direction of the spacecraft velocity. Currently this vector must 
-y_velocity                lie in the xz-plane. The nadir direction is defined to be orthogonal to this vector in xz-plane
-z_velocity                also, and point towards the Mercury. 
-
-                          Velocity and nadir vectors are used to construct an orthogonal basis, where the z'-axis is 
-						  the nadir direction, x'-axis is to the direction of the velocity, and y'-axis completes the set. 
-						  
-                          Instrument #1 will point to the opposite direction from the nadir vector.
-						  Instruments #2-#5 will lie in the x'y' -plane.
-
+* Instrument
+    * The number of the instrument (1-5) that should be used in the simulation. 
+    * Only particles that have entered this instrument will be calculated.
+* conehalfwidth
+    * Half width of the observation cone of the chosen instrument, in degrees.
+* particles
+    * Number of simulated particles (positive integer).
+* q
+    * Charge of the simulated particles, in elementary charges (proton charge = 1.0 etc).
+* m
+    * Mass of the simulated particles, in proton masses.
+* energy_min, energy_max
+    * Minimum and maximum injection energies of simulated particles in keV.
+    * The energy_max must be larger than energy_min.
+* pwrlawindex
+    * Particles are injected using a power law distribution. This is the power law index.
+* x_spacecraft, y_spacecraft, z_spacecraft
+    * Coordinates of the injection position, i.e., coordinates of the spacecraft, in km.
 * x_velocity, y_velocity, z_velocity
     * A vector pointing to the direction of the spacecraft velocity. Currently this vector must lie in the xz-plane. The nadir direction is defined to be orthogonal to this vector in xz-plane also, and point towards the Mercury.
+    * Instrument #1 will point to the opposite direction from the nadir vector.
+    * Instruments #2-#5 will lie in the x'y' -plane.
 
 MirrorDipole
 ------------
