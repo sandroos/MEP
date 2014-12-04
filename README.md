@@ -7,9 +7,11 @@ GENERAL
 =======
 
 The simulation is compiled by typing
+
 `> make mercury`
 
 After a successful compilation, simulation can be run by typing
+
 `> ./mercury <parameter file> <output file>`
 
 where `<parameter file>` is the name of the parameter file (see below)
@@ -169,6 +171,9 @@ z_velocity                also, and point towards the Mercury.
 						  
                           Instrument #1 will point to the opposite direction from the nadir vector.
 						  Instruments #2-#5 will lie in the x'y' -plane.
+
+* x_velocity, y_velocity, z_velocity
+    A vector pointing to the direction of the spacecraft velocity. Currently this vector must lie in the xz-plane. The nadir direction is defined to be orthogonal to this vector in xz-plane also, and point towards the Mercury.
 
 MirrorDipole
 ------------
