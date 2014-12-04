@@ -12,8 +12,8 @@ The simulation is compiled by typing
 After a successful compilation, simulation can be run by typing
 > ./mercury <parameter file> <output file>
 
-  where <parameter file> is the name of the parameter file (see below)
-        <output file>    is the name of the output file
+where <parameter file> is the name of the parameter file (see below)
+      <output file>    is the name of the output file
 
 The output file contains the injection, future, and past states of each particle. Here 
 "future" means that the trajectory has been calculated forward in time, and "past" that 
@@ -28,17 +28,18 @@ Here i = injection state
      1 = future state
      2 = past state
 	 
-	  t           = exit time
-     g           = gamma-factor
-	  x,y,z       = coordinates of the exit point
-	  vx,vy,vz    = components of the velocity
+    t           = exit time
+    g           = gamma-factor
+    x,y,z       = coordinates of the exit point
+    vx,vy,vz    = components of the velocity
 
 There are a few example parameter files:
 
 ./mercury params.txt o.txt
 
 If o.txt is used as the name of the output file, there are gnuplot macros that 
-can be used to visualize the results. 
+can be used to visualize the results:
+
 > gnuplot
 gnuplot> load "gp_obs"
 gnuplot> load "gp_fobs"
@@ -58,10 +59,7 @@ magnetic field at the command line
 > make mercury FIELD=dipole.o
 > make mercury FIELD=mirrordipole.o
 
-IT IS ALSO POSSIBLE TO CALCULATE AND PRINT THE TRAJECTORY OF A SINGLE PARTICLE
-------------------------------------------------------------------------------
-
-In this case one writes to the terminal
+You can also calculate and print the trajectory of a single particle. In this case one writes to the terminal
 > make clean
 > make mercury CXXFLAGS=-DTRAJ
 
@@ -92,9 +90,8 @@ using 1 MeV protons.
 
 (The simulation needs to be compiled using "make mercury FIELD=mirrordipole.o CXXFLAGS=-DTRAJ". 
 
------------------------------------
 INPUT PARAMETERS FOR THE SIMULATION
------------------------------------
+===================================
 
 RandomNumbers
 -------------
@@ -196,8 +193,6 @@ y_maxradius(hermean)              y-coordinate of the center of the outer "exit 
 z_maxradius(hermean)              z-coordinate of the center of the outer "exit sphere".
 
 
-
-
 Simulation
 ----------
 
@@ -209,11 +204,8 @@ saveinterval_dt           Defines the interval the trajectory of the particle is
                           This parameter is used only when the simulation has been compiled with the 
 						  -DTRAJ option (see above).
 
-
-
---------------------------------------------------------
 CALCULATION OF FIELD LINES FOR THE GNUPLOT VISUALIZATION
---------------------------------------------------------
+========================================================
 
 There is a very crude and barbaric program that will calculate some field lines to an ascii 
 file, which can then be included in gnuplot visualization. First, it needs to be compiled 
@@ -253,6 +245,3 @@ where
 Example:
 
 > ./flines 14.0 3 4 params.txt > lines.txt
-
-
-
