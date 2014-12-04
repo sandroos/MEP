@@ -79,16 +79,16 @@ the same color! "gp_ftraj" is the same as "gp_traj", except that it also draws f
 
 The output file has a different format in this case. It is as follows:
 
-1  2  3  4  5  6  7  8  9  10
-t  x  y  z  vx vy vz Bx By Bz
+> 1  2  3  4  5  6  7  8  9  10
+> t  x  y  z  vx vy vz Bx By Bz
 
 The two example parameter files named as "_chaotic.txt" should show chaotic orbits of ~300 keV protons. 
 The file "params_mirror.txt" does the same for the mirror dipole field configuration, but 
 using 1 MeV protons.
-
 > ./mercury params_mirror.txt o.txt
 
-(The simulation needs to be compiled using "make mercury FIELD=mirrordipole.o CXXFLAGS=-DTRAJ". 
+Note that the code needs to be compiled using 
+> make mercury "FIELD=mirrordipole.o" "FLAGS=-DTRAJ"
 
 INPUT PARAMETERS FOR THE SIMULATION
 ===================================
